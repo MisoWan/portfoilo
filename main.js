@@ -9,31 +9,42 @@ document.addEventListener('scroll',()=>{
     } else{
         navbar.classList.remove('navbar--dark');
     }
-})
+});
+
 
 // Handle scrolling when tapping on the navbar menu
 const navbarMenu = document.querySelector('.navbar__menu');
 navbarMenu.addEventListener('click', (event)=>{
     const target = event.target;
+    console.log(target)
     const link = target.dataset.link;
     if(link == null){
         return;
     }
+    navbarMenu.classList.remove('open');
     scrollIntoView(link);
+});
+
+// Navbar toggle button for small screen
+const navbarToggleBtn = document.querySelector('.navbar__toggle-btn');
+    navbarToggleBtn.addEventListener('click',()=>{
+    console.log(navbarToggleBtn);
+    navbarMenu.classList.toggle('open');
+    console.log(navbarMenu); 
 });
 
 // Handle click on "contact me" button on home
 const homeContactBtn = document.querySelector('.home__contact');
 homeContactBtn.addEventListener('click', ()=>{
-    scrollIntoView('#contact')
+    scrollIntoView('#contact');
 });
 
 // Make home slowly fade to trasparent as the window scrolls down
 const home = document.querySelector('.home__container');
 const homeHeight = home.getBoundingClientRect().height;
 document.addEventListener('scroll',()=>{
-       home.style.opacity = 1-window.scrollY/homeHeight;
-})
+       home.style.opacity = 1 - window.scrollY/homeHeight;
+});
 
 // Show "arrow up" button when scrolling down
 const arrowUp = document.querySelector('.arrow-up');
@@ -43,12 +54,12 @@ document.addEventListener('scroll',()=>{
      } else{
     arrowUp.classList.remove('visible');
 }
-})
+});
 
 // Handle clicks Arrow up
 arrowUp.addEventListener('click', ()=>{
     scrollIntoView('#home')
-})
+});
 
 
 // Projects
@@ -90,11 +101,11 @@ workBtnContainer.addEventListener('click',(e)=>{
     //     project = projects[i];
     //     console.log(project)
     // }
-})
+});
 
 
 function scrollIntoView(selector){
     const contact = document.querySelector(selector);
     contact.scrollIntoView({behavior : 'smooth'})
-}
+};
 

@@ -44,6 +44,7 @@ const home = document.querySelector('.home__container');
 const homeHeight = home.getBoundingClientRect().height;
 document.addEventListener('scroll',()=>{
        home.style.opacity = 1 - window.scrollY/homeHeight;
+       console.log(`home:${window.scrollY}, homeHeight:${homeHeight}, 나누기 ${window.scrollY/homeHeight},opacity:${home.style.opacity}`)
 });
 
 // Show "arrow up" button when scrolling down
